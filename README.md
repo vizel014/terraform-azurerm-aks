@@ -3,10 +3,38 @@
 This repository contains HashiCorp Terraform configuration required to create a Azure AKS cluster.
 
 ## Prerequisites
-
-* [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) installed.
+* [ubuntu](https://tutorials.ubuntu.com/tutorial/tutorial-ubuntu-on-windows#0) installed.
+* [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) possibility.
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed.
 * HashiCorp [Terraform](https://terraform.io/downloads.html) installed.
+
+## Install terraform Ubuntu
+Steps to install terraform on Ubuntu / Ubuntu cloud server :
+
+Install unzip
+
+sudo apt-get install unzip
+# Download latest version of the terraform
+
+wget https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip
+# Extract the downloaded file archive
+
+unzip terraform_0.11.11_linux_amd64.zip
+# Move the executable into a directory searched for executables
+
+sudo mv terraform /usr/local/bin/
+# Run it
+
+terraform --version 
+
+## Install kubectl Ubuntu
+
+sudo apt-get update && sudo apt-get install -y apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update
+sudo apt-get install -y kubectl
+
 
 ### Clone the Github repository
 
@@ -19,7 +47,7 @@ git clone https://github.com/anubhavmishra/terraform-azurerm-aks.git
 Generate Azure client id and secret.
 
 ```bash
-az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/YOUR_SUBSCRIPTION_ID"
+az ad sp create-for-rbac --role="Contributor" --scopes="/SUBSCRIPTION_ID"
 ```
 
 Expected output:

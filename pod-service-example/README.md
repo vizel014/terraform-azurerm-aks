@@ -27,3 +27,5 @@ Check whether pod, service, and namespace is created successfully
 ```bash
 kubectl get pods,services,namespace
 ```
+```bash
+kubectl get pods,svc --namespace=aks-demo
